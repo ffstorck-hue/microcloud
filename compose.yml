@@ -1,10 +1,10 @@
-# TechNova Micro-Cloud – Webserver auf Port 8085
+# TechNova Micro-Cloud – Webserver Apache httpd auf Port 8085
 services:
   web:
-    image: nginx:alpine
+    image: httpd:2.4-alpine
     container_name: technova-web
     restart: unless-stopped
     ports:
-      - "8085:80"          # HOST-PORT:CONTAINER-PORT – nginx lauscht im Container auf 80
+      - "8085:80"          # Apache lauscht im Container ebenfalls auf Port 80
     volumes:
-      - ./html:/usr/share/nginx/html:ro   # Document Root von nginx, nur lesend
+      - ./html:/usr/local/apache2/htdocs:ro   # Document Root von Apache, nur lesend
